@@ -5,7 +5,7 @@ class UsersController < ApplicationController
         if auth_token
             token = JWT.decode( auth_token, ENV['JWT_TOKEN'])[0]
             user = User.find_by( id: token['user'] )
-            render json: user, except: [:created_at, :updated_at], include: [:communities, :posts], status: :ok
+            render json: user, except: [:created_at, :updated_at], include: [:communities, :posts ], status: :ok
         else
             return nil
         end
