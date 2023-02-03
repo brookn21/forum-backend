@@ -15,6 +15,16 @@ class LikesController < ApplicationController
         end
     end
 
+    def destroy
+        like = Like.find_by( id: params[:id])
+        if like
+            like.destroy
+            head :no_content
+        else
+            render json: { errors: ['like not found.']}, status: :not_found
+        end
+    end
+
 
     private
 
