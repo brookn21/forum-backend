@@ -27,28 +27,28 @@ class UsersController < ApplicationController
         end
     end
 
-    # def update 
-    #     user = User.find_by(id: params[:id])
-    #     if user 
-    #         if user_params[:username]
-    #         user.username = user_params[:username]
-    #         end
-    #         if user_params[:img]
-    #         user.img = user_params[:img]
-    #         end
-    #         if user_params[:bio]
-    #         user.body = user_params[:bio]
-    #         end
-    #         if user.valid?
-    #             user.save
-    #             render json: user, except:[:created_at, :updated_at ], include: [:communities, :posts], status: :ok
-    #         else
-    #             render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
-    #         end
-    #     else
-    #         render json: {errors:["User Not Found"]}, status: :not_found
-    #     end
-    # end
+    def update 
+        user = User.find_by(id: params[:id])
+        if user 
+            if user_params[:username]
+            user.username = user_params[:username]
+            end
+            if user_params[:img]
+            user.img = user_params[:img]
+            end
+            if user_params[:bio]
+            user.body = user_params[:bio]
+            end
+            if user.valid?
+                user.save
+                render json: user, except:[:created_at, :updated_at ], include: [:communities, :posts], status: :ok
+            else
+                render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+            end
+        else
+            render json: {errors:["User Not Found"]}, status: :not_found
+        end
+    end
 
     private
 

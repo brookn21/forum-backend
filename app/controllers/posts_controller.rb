@@ -49,7 +49,7 @@ class PostsController < ApplicationController
             post.destroy
             head :no_content
         else
-            render json: { errors: ['user_comm not found.']}, status: :not_found
+            render json: { errors: ['Post not found.']}, status: :not_found
         end
     end
 
